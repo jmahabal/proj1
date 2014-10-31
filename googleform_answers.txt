@@ -1,0 +1,15 @@
+https://docs.google.com/forms/d/1VhMa7Ml0PdLYEPztMRqoBMsHrJH3O_jiKSJoOKRBYlk/viewform
+
+Question 0: So the problem was that rails didn't know what a 'Pokemon' was, because we never created a model for it. It knew what a trainer was, but not a Pokemon. So to fix this and to create a model, we have to run 'rails generate model Pokemon name:type'.
+
+Question 1: So if we look at the home_controller.rb file, we can see how @pokemon is defined: it's a random sample from the list of pokemon who don't have trainers. We get the list of Pokemon (both with or without trainers) through our seed file. It just turns out that at least yet, all of our pokemon are trainerless, so we can see all of them in the wild. Through our seed file, we see that all of their levels are somewhere between 1 and 20 (but it's random).
+
+Question 2a: 'capture_path' comes from our routes.rb file, where we defined any url with '/capture' to be a patch request that maps to the 'capture' function in pokemon (in pokemons_controller). So the capture_path leads to the 'capture' function, with '@pokemon' (the pokemon shown) being passed in as input. 
+
+Question 2b: It's important to note that we have to change 'capture' to 'asdf' in two places, in the routes file, and then in our html file. In the html file, Rails sees that we are going to /asdf, because that's what asdf_path means. So it goes to the routes file, and looks for the matching key, and it finds it as '/asdf'. '/asdf' maps to the capture function in pokemons_controller, and so it works as expected. 
+
+Question 3: Well, you know how you have a party of six pokemon? High School me though it'd be a good idea to capture six luvdisks and name them, in order, "Will" "You" "Go" "Prom" "With" "Me". Of course, I ended up asking someone in a more traditional manner, but it was the thought that counts. 
+
+Question 4: So my redirect was 'redirect_to trainer_path(@pokemon.trainer_id)'. Basically, what this means is that I pass in the variable '@pokemon.trainer_id', or the trainer for whichever pokemon was damaged, to the trainer path, which turns into a URI of the form '/trainer/@pokemon.trainer_id'.
+
+Question 5:  

@@ -7,6 +7,9 @@ class TrainersController < ApplicationController
 
   def show
     @trainer = Trainer.find(params[:id])
+    number = @trainer.id
+    trainers_pokemon = Pokemon.where(trainer_id:number)
+    @pokemon = trainers_pokemon.all
   end
 
 end

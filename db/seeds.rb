@@ -8,7 +8,10 @@
 
 # Make Pokemon
 %w(Squirtle Charmander Bulbasaur Pikachu).each do |name|
-  Pokemon.create name: name, level: rand(1..20)
+  random20 = rand(1..20)
+  levelbasedhealth = random20 * 10
+  Pokemon.create name: name, level: random20, faint: false, experience: 0, 
+  :health => levelbasedhealth, :maxhealth => levelbasedhealth
 end
 
 # Make other trainers
