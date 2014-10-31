@@ -8,7 +8,9 @@
   <% if pokemon.faint == false %>
     <li><%= pokemon.name %>: Level <%= pokemon.level %>, <%= pokemon.health %>/<%= pokemon.maxhealth %> HP, <%= pokemon.experience %> Experience </li>
 
+    <%= damaging_pokemon = select_tag "pokemons", options_from_collection_for_select(@pokemon, "id", "name") %>	
     <%= link_to "Damage", damage_path(:damaged_pokemon => pokemon, :damaging_pokemon => pokemon), :class => "button medium", :method => :patch %>
+
     <% if @trainer == current_trainer %>
       <%= button_to "Heal", heal_path(id: pokemon), :class => "button medium", :method => :patch %>
     <% end %>
