@@ -12,4 +12,4 @@ Question 3: Well, you know how you have a party of six pokemon? High School me t
 
 Question 4: So my redirect was 'redirect_to trainer_path(@pokemon.trainer_id)'. Basically, what this means is that I pass in the variable '@pokemon.trainer_id', or the trainer for whichever pokemon was damaged, to the trainer path, which turns into a URI of the form '/trainer/@pokemon.trainer_id'.
 
-Question 5:  
+Question 5: So 'flash' is good for showing error messages because the cache is cleared after each use, so you're only displaying the error message, and not keeping all that data throughout the session (though, that might be good for data mining...) '@pokemon.errors' gives us the list of errors that pokemon can have. '.full_messages' basically just gives us the full versions of those, and then '.to_sentences' gives us these in a string output. So we have this array now of error messages, and we flash the appropiate error messages using flash.
