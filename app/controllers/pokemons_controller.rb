@@ -13,6 +13,19 @@ class PokemonsController < ApplicationController
     redirect_to pokemon_path(@pokemon)
   end
 
+   def damagenoec
+    @pokemon = Pokemon.find params[:damaged_pokemon]
+  	new_health = @pokemon.health - 10
+  	if new_health <= 0
+  	  @pokemon.update(:faint => true)
+  	  @pokemon.update(:health => 0)
+  	else
+  	  @pokemon.update(:health => new_health)
+  	end
+  	@pokemon.save
+  	redirect_to trainer_path(@pokemon.trainer_id)
+  end
+
   def damage
   	@damaging_pokemon = Pokemon.find params[:damaging_pokemon]
     @pokemon = Pokemon.find params[:damaged_pokemon]
@@ -79,7 +92,7 @@ class PokemonsController < ApplicationController
   private
 
   def pokemon_params
-  	params.required(:pokemon).permit(:name)
+  	params.required(:pokemon).permit(:name, :damaging_pokemon, :damaged_pokemon)
   end
 
 end
